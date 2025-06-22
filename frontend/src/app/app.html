@@ -1,0 +1,33 @@
+<div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
+  <header class="bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400">Ecommerce Test</h1>
+    <nav class="flex items-center space-x-4">
+      <ng-container *ngIf="!isAuthenticated">
+        <a [routerLink]="['/auth/login']" class="...">Login</a>
+        <a [routerLink]="['/auth/register']" class="...">Registro</a>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated">
+        <a [routerLink]="['/']" class="...">Inicio</a>
+        <a [routerLink]="['/auth/profile']" class="...">Perfil</a>
+        <a *ngIf="isAdmin" [routerLink]="['/admin']" class="...">Dashboard</a>
+        <button (click)="logout()" class="...">Cerrar sesión</button>
+      </ng-container>
+      <button
+        (click)="toggleTheme()"
+        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+        aria-label="Toggle dark mode"
+      >
+        <svg *ngIf="!(isDarkMode$ | async)" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12h1m15.325-7.757l-.707.707M5.388 18.325l-.707.707M18.325 5.388l-.707-.707M5.388 5.388l-.707.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
+        <svg *ngIf="(isDarkMode$ | async)" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center p-4">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="bg-white dark:bg-gray-800 shadow p-4 text-center text-gray-600 dark:text-gray-400 text-sm">
+    &copy; 2025 Ecommerce Test. Todos los derechos reservados.
+  </footer>
+</div>

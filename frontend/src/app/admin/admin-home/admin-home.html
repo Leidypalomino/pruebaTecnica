@@ -1,0 +1,60 @@
+<h1 class="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-8">Dashboard de Administración</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total de Ventas</p>
+        <p class="text-3xl font-bold text-blue-600 dark:text-blue-400 mt-1">${{ totalSales | number:'1.2-2' }}</p>
+      </div>
+      <svg class="w-10 h-10 text-blue-500 dark:text-blue-300 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V4m0 8v4m-6 0h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Productos en Stock</p>
+        <p class="text-3xl font-bold text-green-600 dark:text-green-400 mt-1">{{ productsInStock | number }}</p>
+      </div>
+      <svg class="w-10 h-10 text-green-500 dark:text-green-300 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Órdenes Pendientes</p>
+        <p class="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mt-1">{{ pendingOrders | number }}</p>
+      </div>
+      <svg class="w-10 h-10 text-yellow-500 dark:text-yellow-300 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Nuevos Usuarios (últimos 30 días)</p>
+        <p class="text-3xl font-bold text-purple-600 dark:text-purple-400 mt-1">{{ newUsersLast30Days | number }}</p>
+      </div>
+      <svg class="w-10 h-10 text-purple-500 dark:text-purple-300 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m0 0v-2a3 3 0 013-3h4a3 3 0 013 3v2M7 20H2v-2a3 3 0 015.356-1.857M12 11a4 4 0 110-8 4 4 0 010 8zm0 1.9996h.01"></path></svg>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Ventas por Mes</h3>
+    <p class="text-gray-600 dark:text-gray-400">Aquí iría un gráfico de ventas (ej. con Chart.js o D3.js)</p>
+    <div class="h-64 bg-gray-50 dark:bg-gray-700 rounded-md flex items-center justify-center text-gray-400 dark:text-gray-500">
+      [Placeholder para Gráfico de Ventas]
+    </div>
+  </div>
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Productos Más Vendidos</h3>
+    <p class="text-gray-600 dark:text-gray-400">Tabla o lista de los productos más vendidos</p>
+    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+      <li *ngFor="let product of topSellingProducts" class="mb-1">{{ product.name }} - ${{ product.sales | number:'1.2-2' }}</li>
+    </ul>
+  </div>
+</div>

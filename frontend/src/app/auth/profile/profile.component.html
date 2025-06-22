@@ -1,0 +1,49 @@
+<div *ngIf="profile; else loadingOrError" class="max-w-md mx-auto bg-white rounded-xl shadow-md p-8 mt-12">
+  <div class="flex items-center mb-6">
+    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl font-bold text-blue-600 mr-4">
+      {{ profile.name[0] }}
+    </div>
+    <div>
+      <h2 class="text-2xl font-bold text-blue-700">{{ profile.name }}</h2>
+      <p class="text-gray-500">{{ profile.email }}</p>
+    </div>
+  </div>
+  <div class="space-y-2">
+    <div>
+      <span class="font-semibold text-gray-700">Rol:</span>
+      <span class="ml-2 text-blue-600">{{ profile.role }}</span>
+    </div>
+    <div>
+      <span class="font-semibold text-gray-700">Activo:</span>
+      <span class="ml-2" [ngClass]="profile.is_active ? 'text-green-600' : 'text-red-600'">
+        {{ profile.is_active ? 'Sí' : 'No' }}
+      </span>
+    </div>
+    <div>
+      <span class="font-semibold text-gray-700">Miembro desde:</span>
+      <span class="ml-2 text-gray-600">{{ profile.created_at | date:'mediumDate' }}</span>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingOrError>
+  <div *ngIf="errorMsg; else skeleton" class="text-red-600 text-center mt-12 text-lg font-semibold">
+    {{ errorMsg }}
+  </div>
+  <ng-template #skeleton>
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md p-8 mt-12 animate-pulse">
+      <div class="flex items-center mb-6">
+        <div class="w-16 h-16 rounded-full bg-gray-200 mr-4"></div>
+        <div>
+          <div class="h-6 w-32 bg-gray-200 rounded mb-2"></div>
+          <div class="h-4 w-40 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="h-4 w-24 bg-gray-200 rounded"></div>
+        <div class="h-4 w-20 bg-gray-200 rounded"></div>
+        <div class="h-4 w-36 bg-gray-200 rounded"></div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
